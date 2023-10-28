@@ -5,8 +5,8 @@ router.post('/crear-tarea', (req, res) => {
     res.send("Tarea añadida")
 })
 
-router.delete('/eliminar-tarea', (req, res) => {
-    res.send("Tarea eliminada")
+router.delete('/eliminar-tarea/:idTarea', (req, res) => {
+    res.send("La tarea eliminada es : " + Id)
 })
 
 router.put('/actualizar-tarea', (req, res) => {
