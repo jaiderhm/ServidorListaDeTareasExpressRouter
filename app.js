@@ -5,7 +5,7 @@ const editRouter = require('./list-edit-router')
 const viewRouter = require('./list-view-router')
 
 const objeto = {
-    "id":"123456",
+    "id":123456,
     "isCompleted":false,
     "description":"Walk the dog",
 }
