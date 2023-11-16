@@ -5,10 +5,17 @@ const editRouter = require('./list-edit-router')
 const viewRouter = require('./list-view-router')
 
 const objeto = {
-    "id":123456,
+    "id": Date.now(),
     "isCompleted":false,
     "description":"Walk the dog",
 }
+
+app.use(express.json());
+
+app.get("/this-should-exists", (req, res)=>{
+    res.status(404).send("Not found")
+});
+
 
 
 app.get('/', (req, res) => {
