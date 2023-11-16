@@ -1,6 +1,6 @@
 const {Router} = require("express")
 const router = Router();
-
+const taks = []
 
 
 router.post("/crear-tarea",(req, res, next) => {
@@ -9,8 +9,8 @@ router.post("/crear-tarea",(req, res, next) => {
     if (Object.keys(req.body).length === 0) {
       return res.status(400).json({ error: 'El cuerpo de la solicitud POST está vacío.' });
     } else {
-      const { indicator, description } = req.body;
-      if (!indicator || !description) {
+      const { description } = req.body;
+      if (!description) {
         return res.status(400).json({ error: 'Faltan atributos para crear la tarea.' });
       }
     }
@@ -19,8 +19,8 @@ router.post("/crear-tarea",(req, res, next) => {
     if (Object.keys(req.body).length === 0) {
       return res.status(400).json({ error: 'El cuerpo de la solicitud PUT está vacío.' });
     } else {
-      const { indicator, description, completed } = req.body;
-      if (!indicator || !description || completed === undefined) {
+      const { id, description, completed } = req.body;
+      if (!id || !description || completed === undefined) {
         return res.status(400).json({ error: 'Información no válida o atributos faltantes para actualizar la tarea.' });
       }
     }
@@ -32,6 +32,16 @@ router.post("/crear-tarea",(req, res, next) => {
 
 // Rutas y controladores para tu router list-edit-router
 router.post('/crear-tarea', (req, res) => {
+  const {description, completed} = req.body
+  const newTaks = {
+    id : Date.now(),
+    completed,
+    description,
+  }
+
+  console.log(newTaks)
+  taks.push(newTaks)
+  res.status(201)
   res.send("Tarea añadida")
 })
 
@@ -48,7 +58,6 @@ router.put('/actualizar-tarea/:idTarea', (req, res) => {
 // Middleware para manejar errores
 
   
-
 
 
 module.exports = router;

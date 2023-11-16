@@ -12,6 +12,7 @@ router.get('/tareas-completas', (req, res) => {
 })
 
 router.get('/tareas-incompletas', (req, res) => {
+    res.json(taks)
     res.send("Listas de tareas Incompletas")
 })
 
