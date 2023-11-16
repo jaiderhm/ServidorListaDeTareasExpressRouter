@@ -1,7 +1,7 @@
 const {Router} = require("express")
 const router = Router();
 
-router.use(express.json());
+
 
 router.post("/crear-tarea",(req, res, next) => {
   if (req.method === 'POST') {
@@ -31,23 +31,24 @@ router.post("/crear-tarea",(req, res, next) => {
 });
 
 // Rutas y controladores para tu router list-edit-router
-// ...
+router.post('/crear-tarea', (req, res) => {
+  res.send("Tarea añadida")
+})
+
+router.delete('/eliminar-tarea/:idTarea', (req, res) => {
+  const id = req.params.idTarea
+  res.send("La tarea eliminada es : " + id)
+})
+
+router.put('/actualizar-tarea/:idTarea', (req, res) => {
+  const id = req.params.idTarea
+  res.send("La tarea actualizada es : " + id)
+})
+
 // Middleware para manejar errores
 
   
 
-router.post('/crear-tarea', (req, res) => {
-    res.send("Tarea añadida")
-})
 
-router.delete('/eliminar-tarea/:idTarea', (req, res) => {
-    const id = req.params.idTarea
-    res.send("La tarea eliminada es : " + id)
-})
-
-router.put('/actualizar-tarea/:idTarea', (req, res) => {
-    const id = req.params.idTarea
-    res.send("La tarea actualizada es : " + id)
-})
 
 module.exports = router;
