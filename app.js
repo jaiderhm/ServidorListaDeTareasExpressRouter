@@ -33,7 +33,7 @@ app.post('/login', (req, res) => {
 });
 
 // Ruta protegida
-app.get('/protected', (req, res) => {
+app.get('/rutaProtegida', (req, res) => {
     const token = req.headers.authorization;
   
     if (!token) {
@@ -46,7 +46,7 @@ app.get('/protected', (req, res) => {
         return res.status(401).json({ error: 'Invalid token' });
       }
   
-      // El token es válido, puede usarlo decodificado para obtener información del usuario
+    
       res.json({ message: 'Access granted', user: decoded });
     });
 });
@@ -59,16 +59,17 @@ app.get("/this-should-exists", (req, res)=>{
 });
 
 
-
+// Ruta raiz del servidor
 app.get('/', (req, res) => {
     res.json(taks);
 });
 
+// Ruta para editar tareas
 app.use('/editar', editRouter, () =>{
-
     console.log("estan editando la lista de tareas")
 });
 
+// Ruta para ver tareas
 app.use('/ver', viewRouter, () => {
     res.json(taks)
     console.log("estan viendo la lista de tareas")
